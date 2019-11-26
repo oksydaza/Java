@@ -7,22 +7,19 @@ public class BuisnessCard {
         
         Scanner scanner = new Scanner(System.in);
 
-        String name = "*"+"Magdalena";
-        String surname = "Wlazloooooooooo000000000";
-        int tel = 123456789;
-        String city = "Krakow";
-
-        // System.out.println("Proszę podaj imię");
-        // String name = "*" + scanner.next();
-        // System.out.println("Proszę podaj nazwisko");
-        // String surname = scanner.next();
-        // System.out.println("Proszę podaj numer telefonu");
-        // int tel = scanner.nextInt();
-        // System.out.println("Proszę podaj miasto");
-        // String city = scanner.next();
+        System.out.println("Proszę podaj imię");
+        String name = "*" + scanner.next();
+        System.out.println("Proszę podaj nazwisko");
+        String surname = scanner.next();
+        System.out.println("Proszę podaj numer telefonu");
+        int tel = scanner.nextInt();
+        System.out.println("Proszę podaj miasto");
+        String city = scanner.next();
+        scanner.close();
 
         String firstLine = name + " " + surname;
         String secondLine = "*" + "tel: " + tel + " adres:" + city;
+        int maxLineLength = (firstLine.length() > secondLine.length()) ? firstLine.length() : secondLine.length();
         StringBuilder firstLineBuilder = new StringBuilder();
         StringBuilder secondLineBuilder = new StringBuilder();
         firstLineBuilder.append(firstLine);
@@ -33,24 +30,25 @@ public class BuisnessCard {
             for( int i = 0; i < numberOfSpaces; i++ ){
                 firstLineBuilder.append(" ");
             }
-
+        }
+        if(firstLine.length() > secondLine.length()) {
+            for( int i = 0; i < numberOfSpaces; i++ ){
+                secondLineBuilder.append(" ");
+            }
         }
         String finalFirstLine = firstLineBuilder.toString();
         String finalSecondLine = secondLineBuilder.toString();
-        // =================================
-        // print upper stars
-        for (int i = 0; i < secondLine.length() + 1; i++){
+        
+        for (int i = 0; i < maxLineLength + 1; i++){
             System.out.print("*");
             }
         System.out.print("\n");
         System.out.println(finalFirstLine + "*");
         System.out.println(finalSecondLine + "*");
-        // System.out.println(bottomLine);
 
-        //print lower stars
-        for (int i = 0; i < secondLine.length() + 1; i++){
+        for (int i = 0; i < maxLineLength + 1; i++){
             System.out.print("*");
-            }
+        }  
         System.out.println("\n");
     }
 }    

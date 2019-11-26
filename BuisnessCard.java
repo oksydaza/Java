@@ -7,49 +7,50 @@ public class BuisnessCard {
         
         Scanner scanner = new Scanner(System.in);
 
-        // String name = "*"+"Magdalena";
-        System.out.println("Proszę podaj imię");
-        String name = "*" + scanner.next();
-       
-        // String surname = "Wlazlo";
-        System.out.println("Proszę podaj nazwisko");
-        String surname = scanner.next();
+        String name = "*"+"Magdalena";
+        String surname = "Wlazloooooooooo000000000";
+        int tel = 123456789;
+        String city = "Krakow";
+
+        // System.out.println("Proszę podaj imię");
+        // String name = "*" + scanner.next();
+        // System.out.println("Proszę podaj nazwisko");
+        // String surname = scanner.next();
+        // System.out.println("Proszę podaj numer telefonu");
+        // int tel = scanner.nextInt();
+        // System.out.println("Proszę podaj miasto");
+        // String city = scanner.next();
+
         String firstLine = name + " " + surname;
-        //int tel = 123456789;
-        System.out.println("Proszę podaj numer telefonu");
-        int tel = scanner.nextInt();
-        //String city = "Krakow ";
-        System.out.println("Proszę podaj miasto");
-        String city = scanner.next();
-        String bottomLine = "*" +tel+" adres:" + city;
+        String secondLine = "*" + "tel: " + tel + " adres:" + city;
+        StringBuilder firstLineBuilder = new StringBuilder();
+        StringBuilder secondLineBuilder = new StringBuilder();
+        firstLineBuilder.append(firstLine);
+        secondLineBuilder.append(secondLine);
+        int numberOfSpaces = Math.abs(secondLine.length() - firstLine.length());
         
-        for (int i = 0; i < bottomLine.length() + 1; i++){
+        if(firstLine.length() < secondLine.length()) {
+            for( int i = 0; i < numberOfSpaces; i++ ){
+                firstLineBuilder.append(" ");
+            }
+
+        }
+        String finalFirstLine = firstLineBuilder.toString();
+        String finalSecondLine = secondLineBuilder.toString();
+        // =================================
+        // print upper stars
+        for (int i = 0; i < secondLine.length() + 1; i++){
             System.out.print("*");
             }
         System.out.print("\n");
-        
-        StringBuilder stringBuilder = new StringBuilder();
-        stringBuilder.append(firstLine);
+        System.out.println(finalFirstLine + "*");
+        System.out.println(finalSecondLine + "*");
+        // System.out.println(bottomLine);
 
-        System.out.println(name +" "+surname);
-        int numberOfSpaces = Math.abs(bottomLine.length() - firstLine.length());
-        
-        if(firstLine.length() > bottomLine.length()) {
-            for( int i = 0; i < numberOfSpaces; i++ ){
-                stringBuilder.append("_");
-            }
-        }
-        String finalString = stringBuilder.toString();
-
-        System.out.print(finalString);
-        System.out.println(bottomLine);
-
-        for (int i = 0; i < bottomLine.length(); i++){
+        //print lower stars
+        for (int i = 0; i < secondLine.length() + 1; i++){
             System.out.print("*");
             }
         System.out.println("\n");
-        
     }
-   // int lineLenght = Math.max(firstLine, secondLine);
-
 }    

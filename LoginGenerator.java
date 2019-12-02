@@ -7,11 +7,23 @@ public class LoginGenerator {
             System.out.println(full_name.toLowerCase());
         }
         for (int i = 0; i < studentNames.length; i++){
-            studentNamesLowerCase[i] = studentNames[i].toLowerCase
+            studentNamesLowerCase[i] = studentNames[i].toLowerCase();
         }
+        return studentNamesLowerCase;
     }
 
+    public static String[] split(String[] studentNames){
+        String[] studentNamesLowerCase = new String[studentNames.length];
+        for (e tr){
+            studentNamesLowerCase[i] = studentNames[i].split(" ");
+        }
+        for (String full_name : studentNamesLowerCase){
+            System.out.println(full_name.toLowerCase());
+        }
         return studentNamesLowerCase;
+    }
+// acha :) jestem laduje sie nie wiem czy to usmiech?:Dhahaah :*ok
+// ale ja juz mam dosc ;) na dziosto sie zbieraj 
     public static void main(String[] args) {
 
         String[] studentNames = { "Budynek Piotr", 
@@ -20,9 +32,12 @@ public class LoginGenerator {
                                   "Szkieletor Andrzej",
                                   "Domek Marianna" };
     
-    System.out.println(studentNames);
-    toLowerCase(studentNames);
+    
+    String[] lowerCaseStudentNames = toLowerCase(studentNames);
+    String[] splitedStudentNames = split(lowerCaseStudentNames);
 
+    
+    System.out.println(studentNames);
     }
 }
 

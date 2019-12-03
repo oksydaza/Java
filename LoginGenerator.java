@@ -4,7 +4,7 @@ public class LoginGenerator {
     public static String[] toLowerCase(String[] studentNames){
         String[] studentNamesLowerCase = new String[studentNames.length];
         for (String full_name : studentNames){
-            System.out.println(full_name.toLowerCase());
+            // System.out.println(full_name.toLowerCase());
         }
         for (int i = 0; i < studentNames.length; i++){
             studentNamesLowerCase[i] = studentNames[i].toLowerCase();
@@ -13,17 +13,16 @@ public class LoginGenerator {
     }
 
     public static String[] split(String[] studentNames){
-        String[] studentNamesLowerCase = new String[studentNames.length];
-        for (e tr){
-            studentNamesLowerCase[i] = studentNames[i].split(" ");
+        String[] names_and_surnames = new String[2 * studentNames.length];
+
+        for(int i = 0, j = 0; i < studentNames.length; i = i + 1, j = j + 2){
+            names_and_surnames[j] = studentNames[i].split(" ")[0];
+            names_and_surnames[j + 1] = studentNames[i].split(" ")[1];
+            // names_and_surnames[i] = studentNames[i].split(" ")[1];
         }
-        for (String full_name : studentNamesLowerCase){
-            System.out.println(full_name.toLowerCase());
-        }
-        return studentNamesLowerCase;
+        return names_and_surnames;
+    
     }
-// acha :) jestem laduje sie nie wiem czy to usmiech?:Dhahaah :*ok
-// ale ja juz mam dosc ;) na dziosto sie zbieraj 
     public static void main(String[] args) {
 
         String[] studentNames = { "Budynek Piotr", 
@@ -36,14 +35,13 @@ public class LoginGenerator {
     String[] lowerCaseStudentNames = toLowerCase(studentNames);
     String[] splitedStudentNames = split(lowerCaseStudentNames);
 
+    for (String name_item : splitedStudentNames){
+        System.out.println(name_item);
+    }
+
     
-    System.out.println(studentNames);
+    // System.out.println(studentNames);
     }
 }
-
-
-
-//public String toLowerCase()
-//split(String regex, int limit)
 
 

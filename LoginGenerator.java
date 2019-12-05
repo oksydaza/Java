@@ -21,7 +21,25 @@ public class LoginGenerator {
             // names_and_surnames[i] = studentNames[i].split(" ")[1];
         }
         return names_and_surnames;
-    
+    }    
+
+    public static String[] subString(String[] studentNames){
+        String[] trimmed_students_names = new String[2 * studentNames.lenght];
+
+        for(int i = 0, j = 0; i < studentNames.length; i = i + 1, j = j + 2){
+            trimmed_students_names[j] = studentNames[i].substring(0, 1)[0];
+            trimmed_students_names[j + 1] = studentNames[i].substring(0, 2)[0];
+
+        return trimmed_students_names;
+
+
+
+
+
+
+
+    }
+        
     }
     public static void main(String[] args) {
 
@@ -34,10 +52,15 @@ public class LoginGenerator {
     
     String[] lowerCaseStudentNames = toLowerCase(studentNames);
     String[] splitedStudentNames = split(lowerCaseStudentNames);
+    String[] trimmed_students_names = subString(studentNames);
 
     for (String name_item : splitedStudentNames){
         System.out.println(name_item);
     }
+
+    //public String subString(0)
+    //public String substring(0, 2)
+    //System.out.println(splitedStudentNames.substring(0, 2));
 
     
     // System.out.println(studentNames);

@@ -3,9 +3,9 @@ public class LoginGenerator {
     // change that function to return new array with lower case names
     public static String[] toLowerCase(String[] studentNames){
         String[] studentNamesLowerCase = new String[studentNames.length];
-        for (String full_name : studentNames){
-            // System.out.println(full_name.toLowerCase());
-        }
+        // for (String full_name : studentNames){
+        //     // System.out.println(full_name.toLowerCase());
+        // }
         for (int i = 0; i < studentNames.length; i++){
             studentNamesLowerCase[i] = studentNames[i].toLowerCase();
         }
@@ -23,23 +23,39 @@ public class LoginGenerator {
         return names_and_surnames;
     }    
 
-    public static String[] subString(String[] studentNames){
-        String[] trimmed_students_names = new String[2 * studentNames.lenght];
+    public static String[] trimString(String[] studentNames){
+        String[] trimmed_students_names = new String[studentNames.length];
 
-        for(int i = 0, j = 0; i < studentNames.length; i = i + 1, j = j + 2){
-            trimmed_students_names[j] = studentNames[i].substring(0, 1)[0];
-            trimmed_students_names[j + 1] = studentNames[i].substring(0, 2)[0];
+        for(int i = 0, j = 0; i < studentNames.length; i = i + 2, j = j + 2){
+            trimmed_students_names[j] = studentNames[i].substring(0, 2);
+            trimmed_students_names[j + 1] = studentNames[i + 1].substring(0, 3);
+        }
 
         return trimmed_students_names;
-
-
-
-
-
-
-
     }
-        
+
+    public static String[] joinStings(String[] studentNames){
+        String[] joined_students_names = new String[studentNames.length / 2];
+
+        for(int i = 0, j = 0; i < studentNames.length; i = i + 2, j = j + 1){
+            // joined_students_names[j] = studentNames[i] + studentNames[i + 1];
+            joined_students_names[j] = studentNames[i + 1] + studentNames[i];
+            // joined_students_names[j] = studentNames[j + 1] + studentNames[j];
+            // trimmed_students_names[j + 1] = studentNames[i + 1].substring(0, 3);
+        }
+
+        return joined_students_names;
+    }
+    public static String[] appendDomain(String[] studentNames){
+        String[] append_students_names = new String[studentNames.length];
+
+        for(int i = 0; i < studentNames.length; i = i + 1){
+            // joined_students_names[j] = studentNames[i] + studentNames[i + 1];
+            append_students_names[i] = studentNames[i] +"@student.agh.edu.pl";
+            // joined_students_names[j] = studentNames[j + 1] + studentNames[j];
+            // trimmed_students_names[j + 1] = studentNames[i + 1].substring(0, 3);
+        }
+        return append_students_names;
     }
     public static void main(String[] args) {
 
@@ -52,9 +68,11 @@ public class LoginGenerator {
     
     String[] lowerCaseStudentNames = toLowerCase(studentNames);
     String[] splitedStudentNames = split(lowerCaseStudentNames);
-    String[] trimmed_students_names = subString(studentNames);
+    String[] trimmed_students_names = trimString(splitedStudentNames);
+    String[] joined_students_names = joinStings(trimmed_students_names);
+    String[] append_students_names = appendDomain(joined_students_names);
 
-    for (String name_item : splitedStudentNames){
+    for (String name_item : append_students_names){
         System.out.println(name_item);
     }
 

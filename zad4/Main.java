@@ -10,10 +10,10 @@ import java.nio.file.Paths;
 public class Main {
 
 	public static void main(String args[]) throws Exception {
-		// printFilesSimple("C:\\");
-//		printFilesDetails("C:\\");
+		printFilesSimple("C:\\");
+		printFilesDetails("C:\\");
 		printFiles("C:\\", ".sys");
-		//printTree("C:\\");
+		printTree("C:\\test", 4);
 	}
  
 	public static void printFilesSimple(String path) {
@@ -29,17 +29,9 @@ public class Main {
 	public static void printFilesDetails(String path) throws Exception {
 		File folder = new File(path);
 
-//		File file = new File("c:\\hiberfil.sys");
-//		BasicFileAttributes attrs;
-//		attrs = Files.readAttributes(file, BasicFileAttributes.class);
-//		BasicFileAttributes attr;
-//		System.out.print(attr.size());
-
-
 		 File[] listOfFiles = folder.listFiles();
 
 		 for (File file : listOfFiles) {
-		 	// System.out.print(file.getName());
 		 	Path file_path = Paths.get(file.getPath());
              BasicFileAttributes attrs = Files.readAttributes(file_path, BasicFileAttributes.class);
              DateFormat df = new SimpleDateFormat("yyyy/MM/dd mm:ss");
@@ -52,7 +44,6 @@ public class Main {
         
 		}
 		
-	
 	
 	public static void printFiles(String path, String extensionFilter) {
 		FilenameFilter filter = new FilenameFilter() {
@@ -68,16 +59,22 @@ public class Main {
 		}
 	}
 
-	public static void printTree(String path) {
-		// to be implemented
-		// Example
-		// dirname
-		// dirname/file1
-		// dirname/file2
-		// dirname/dirname1
-		// dirname/dirname1/file1
-		// dirname/dirname1/file2
-		// dirname/dirname2/file1
+	public static void printTree(String path, int level) {
+	    File dir = new File(path);
+	    File[] firstLevelFiles = dir.listFiles();
+	    if (firstLevelFiles != null && firstLevelFiles.length > 0) {
+	        for (File aFile : firstLevelFiles) {
+	            for (int i = 0; i < level; i++) {
+	                System.out.print("\t");
+	            }
+	            if (aFile.isDirectory()) {
+	                System.out.println("[" + aFile.getName() + "]");
+	                printTree(aFile.getAbsolutePath(), level + 1);
+	            } else {
+	                System.out.println(aFile.getName());
+	            }
+	        }
+	    }
 	}
-
 }
+
